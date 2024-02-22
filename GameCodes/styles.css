@@ -1,0 +1,168 @@
+body {
+  background-color: #9da39a;
+}
+
+#navBar {
+  background-color: black;
+  height: 40px;
+  width: 1vp;
+}
+
+#navBar a {
+  text-align: center;
+  float: right;
+  color: #f2f2f2;
+  font-size: 25px;
+  padding: 14px 16px;
+}
+
+a {
+  text-decoration: none;
+}
+
+#about h1 {
+  text-align: center;
+}
+
+#game {
+  display: flex;
+  border: 2px black solid;
+  height: 100px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+#keysDisplay {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#startBtn {
+  align-content: center;
+  justify-content: center;
+  width: 60px;
+  height: 30px;
+}
+
+#letterW {
+  background-color: red;
+  font-size: 35px;
+  width: 50px;
+  height: 50px;
+  border: 3px white solid;
+  border-radius: 50%;
+  text-align: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+#letterA {
+  background-color: blue;
+  font-size: 35px;
+  width: 50px;
+  height: 50px;
+  border: 3px white solid;
+  border-radius: 50%;
+  text-align: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+#letterS {
+  background-color: green;
+  font-size: 35px;
+  width: 50px;
+  height: 50px;
+  border: 3px white solid;
+  border-radius: 50%;
+  text-align: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+#letterD {
+  background-color: yellow;
+  font-size: 35px;
+  width: 50px;
+  height: 50px;
+  border: 3px white solid;
+  border-radius: 50%;
+  text-align: center;
+  justify-content: center;
+  margin-right: 20px;
+  box-shadow: 3px 10px 10px;
+}
+#letterI {
+  background-color: pink;
+  font-size: 35px;
+  width: 50px;
+  height: 50px;
+  border: 3px white solid;
+  border-radius: 50%;
+  text-align: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+#letterJ {
+  background-color: turquoise;
+  font-size: 35px;
+  width: 50px;
+  height: 50px;
+  border: 3px white solid;
+  border-radius: 50%;
+  text-align: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+#letterK {
+  background-color: magenta;
+  font-size: 35px;
+  width: 50px;
+  height: 50px;
+  border: 3px white solid;
+  border-radius: 50%;
+  text-align: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+#letterL {
+  background-color: purple;
+  font-size: 35px;
+  width: 50px;
+  height: 50px;
+  border: 3px white solid;
+  border-radius: 50%;
+  text-align: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+#timer {
+  font-size: 45px;
+  height: 70px;
+  width: 70px;
+  border: 3px solid white;
+  border-radius: 50%;
+  background-color: beige;
+  text-align: center;
+  justify-items: center;
+}
+
+#timerDiv {
+  text-align: center;
+}
+
+#timeLimit {
+  background-color: white;
+  width: 150px;
+  margin: 30px auto;
+}
+
+#endDisplay {
+  z-index: +1;
+  height: 300px;
+  width: 200px;
+  background-color: beige;
+  opacity: 0.9;
+  text-align: center;
+  font-size: 40px;
+}
