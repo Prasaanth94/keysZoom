@@ -16,36 +16,15 @@ let score = 0;
 start.addEventListener("click", () => {
   //remove the start button when the game starts
   start.remove();
-  //delcaring a var to display the seconds
-  let seconds = 3;
-  //creating a timer to countdown to start
-  const timer = setInterval(() => {
-    //create and element to display the countdown timer
-    const timerDisplay = document.createElement("div");
-    //give the display an id to style in css
-    timerDisplay.setAttribute("id", "timer");
-    //insert the seconds var into the display
-    timerDisplay.innerHTML = seconds;
-    //restting the gameDisplay div to empty
-    gameDisplay.innerHTML = " ";
-    //adding the timperDisplay to the gameDisplay div
-    gameDisplay.appendChild(timerDisplay);
-    //reducing the seconds by 1 t
-    seconds -= 1;
-    //setting an if condition to test if seconnds hit 0
-    if (seconds < 0) {
-      //clear the timer
-      clearInterval(timer);
-      //remove the timerDisplay
-      timerDisplay.remove();
-    }
-  }, 1000);
-  //creating a 30s timer for the game
+  //invoking the function below
+  timerToStart();
+
+  //setting a timeout so the codes waits for the timertostart to run finish before executing
   setTimeout(() => {
     (function () {
       // creating a var to store a value, this valaue will determine the time of the timer
       let sec = 30;
-      //const to store the timer
+      //const to store the timer and create a timer
       gameTimer = setInterval(() => {
         //timeLimit div to display the countdown
         timeLimit.innerHTML = "00:" + sec;
@@ -59,36 +38,45 @@ start.addEventListener("click", () => {
         }
       }, 1000);
     })();
-
+    //invoking the functions below
     challenge();
     keyPress(challenge);
   }, 5000);
 });
-
+/* ---------------------start of Challenge() codes -------------------------------------------*/
 function challenge() {
   keysArr.length = 0;
+  //resetting the KeysDisplay to empty
   keysDisplay.innerHTML = " ";
-  console.log("difficulty: ", difficulty);
+  //setting codition to check the difficulty lvls, and if matches excute the code below
   if (difficulty === 1) {
+    //using a for loop to display 5 blocks of letters
     for (let i = 0; i < 5; i++) {
+      //invoking these fucktions
       idxGenerator();
       setId();
     }
   }
   if (difficulty === 2) {
+    //using a for loop to display 7 blocks of letters as difficulty increased
     for (let i = 0; i < 7; i++) {
+      //invoking these fucktions
       idxGenerator();
       setId();
     }
   }
 
   if (difficulty === 3) {
+    //using a for loop to display 9 blocks of letters as difficulty increased
     for (let i = 0; i < 9; i++) {
+      //invoking these fucktions
       idxGenerator();
       setId();
     }
   }
 }
+
+/* ---------------------start of keyPress() codes -------------------------------------------*/
 
 function keyPress(callback) {
   //adding a key down event listenr
@@ -134,6 +122,8 @@ function keyPress(callback) {
   });
 }
 
+/* ---------------------start of idxGenerator() codes -------------------------------------------*/
+
 function idxGenerator() {
   //finding a random number for the idx. each level has a specific formula to only select within the right length to control the
   //the difficulty on the user end
@@ -154,6 +144,8 @@ function idxGenerator() {
     scoreCounter = 5;
   }
 }
+
+/* ---------------------start of setId() codes -------------------------------------------*/
 
 function setId() {
   //assining a letter from the letter array to store in the const
@@ -200,6 +192,8 @@ function setId() {
   keysDisplay.appendChild(keyToHit);
 }
 
+/* ---------------------start of endGameDisplay() codes -------------------------------------------*/
+
 function endGameDisplay() {
   const endDisplay = document.createElement("Div");
   endDisplay.setAttribute("id", "endDisplay");
@@ -207,4 +201,33 @@ function endGameDisplay() {
   Your Score is : ${score}`;
   endDisplay.innerHTML = endText;
   gameDisplay.appendChild(endDisplay);
+}
+
+/* ---------------------start of timerToStart() codes -------------------------------------------*/
+
+function timerToStart() {
+  //delcaring a var to display the seconds
+  let seconds = 3;
+  //creating a timer to countdown to start
+  const timer = setInterval(() => {
+    //create and element to display the countdown timer
+    const timerDisplay = document.createElement("div");
+    //give the display an id to style in css
+    timerDisplay.setAttribute("id", "timer");
+    //insert the seconds var into the display
+    timerDisplay.innerHTML = seconds;
+    //restting the gameDisplay div to empty
+    gameDisplay.innerHTML = " ";
+    //adding the timperDisplay to the gameDisplay div
+    gameDisplay.appendChild(timerDisplay);
+    //reducing the seconds by 1 t
+    seconds -= 1;
+    //setting an if condition to test if seconnds hit 0
+    if (seconds < 0) {
+      //clear the timer
+      clearInterval(timer);
+      //remove the timerDisplay
+      timerDisplay.remove();
+    }
+  }, 1000);
 }
