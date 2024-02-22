@@ -128,18 +128,22 @@ function keyPress(callback) {
 }
 
 function idxGenerator() {
-  //finding a random number
+  //finding a random number for the idx. each level has a specific formula to only select within the right length to control the
+  //the difficulty on the user end
   if (difficulty === 1) {
     idx = Math.floor(Math.abs(Math.random() * letters.length - 4));
+    //at this difficuty level, the score will be increased by the value of the scoreCounter
     scoreCounter = 1;
   }
 
   if (difficulty === 2) {
     idx = Math.floor(Math.abs(Math.random() * letters.length - 2));
+    //at this difficuty level, the score will be increased by the value of the scoreCounter
     scoreCounter = 3;
   }
   if (difficulty === 3) {
     idx = Math.floor(Math.abs(Math.random() * letters.length));
+    //at this difficuty level, the score will be increased by the value of the scoreCounter
     scoreCounter = 5;
   }
 }

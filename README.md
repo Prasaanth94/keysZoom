@@ -7,6 +7,10 @@ A simple game to test you reaction time and accuracy.
 The game run on a 30s timer, where you increase your score by completing the challange. It starts at a level 1 difficulty where 5 letters which will be one of [w,a s,d] that will be displayed. You will have to hit the corresponding key on your keyboard to remove the letter shown and earn points. Once all 5 letters have been removed an new set will appear and it is a rinse and repeat. Over time the difficulty will increase. Each level of difficulty will come with 2 addtional letters to remove. In the case of level 2 the letters
 i and j will be included and ontop of having 5 letters to remove you will have 7 letters to remove.
 
+## Screen Shot
+
+![alt text](<../../New folder/gameSS.png>)
+
 ## Getting Started
 
 ### Dependencies
