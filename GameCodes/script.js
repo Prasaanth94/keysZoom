@@ -105,8 +105,15 @@ function keyPress(callback) {
         keysToRemove[counter].remove();
         //break the loop and restart to prevent divs with the same letters to remove at the same run
         counter += 1;
+        //lvl counter used to gradually increase the difficulty
         lvlCounter += 1;
         score += scoreCounter;
+        break;
+      }
+      //if statement to check if the key pressed is not the key displayed
+      if (e.key !== keysToRemove[counter].innerText) {
+        //reduce the score if wrong key is pressed
+        score -= scoreCounter;
         break;
       }
     }
