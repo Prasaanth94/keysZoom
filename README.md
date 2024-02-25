@@ -15,8 +15,7 @@ i and j will be included and ontop of having 5 letters to remove you will have 7
 
 ### Dependencies
 
-- Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-- ex. Windows 10
+HTML, CSS, JavaScript
 
 ### Installing
 
@@ -25,8 +24,8 @@ i and j will be included and ontop of having 5 letters to remove you will have 7
 
 ### Executing program
 
-- How to run the program
-- Step-by-step bullets
+Click the link to play the game.
+https://prasaanth94.github.io/keysZoom/GameCodes/
 
 ```
 code blocks for commands
