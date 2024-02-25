@@ -4,25 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Honk&family=Kdam+Thmor+Pro&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>KeysZoom</title>
   </head>
   <body>
     <div id="navBar">
-      <a href="@#about">About</a>
-      <a href="@instructions">Instructions</a>
-      <a href="@game">Game</a>
+      <a href="#gameLink">Game</a>
+      <a href="#instTitle">Instructions</a>
+      <a href="index.html">About</a>
     </div>
     <div id="about">
-      <h1>KeysZoom</h1>
-      <p></p>
+      <h1 id="gameTitle">KeysZoom</h1>
+      <p id="description">
+        KeyZoom draws inspiration from beloved games of the 2000s, where its primary aim is to recreate the joy and friendly 
+        competition among friends. The essence of the game lies in determining who reigns supreme by achieving the highest score.
+         How is this accomplished? Through the simple action of pressing a designated set of keys. Sounds straightforward, doesn't it? 
+         Yet, it's far from easy. KeyZoom challenges your agility and precision, putting your reaction speed and hand-eye coordination to the test.
+      </p>
     </div>
-    <div id="instructions"></div>
-    <div id="game">
-      <button id="startBtn">Start</button>
+    <div id="instructions">
+      <h1 id="instTitle">Instructions</h1>
+      <p id="instPara">
+        <ol id="instOl">
+          <li>This game has a 30secs timer, when the timer hits 0 the game will stop</li>
+          <li>Goal of the game is to rake up as many points as you can before the timer stops</li>
+          <h2 id="howTo">How to score points?
+
+          </h2>
+          <li>5 letters will pop up on the screen, player has to hit the corresponding key on your keyboard to Score Points</li>
+          <li>Score will increase depending on Points and multipliers will be added according to the Combos hit</li>
+          <li>Combos occur when a player continuously hits corresponding key</li>
+          <li>If a wrong key is hit, Score will be deducted based on Points and Combo will be resetted to 0</li>
+          <li>As the game progresses, the difficulty increases and so will the points</li>
+          <li>Higer difficulty entails more letters popping up and more keys to press</li>
+          
+        </ol>
+      </p>
     </div>
-    <div id="timerDiv">
-      <div id="timeLimit">00:00</div>
+    <div>
+      <a href="game.html" id="gameButton"><button id="gameLink">Lets go</button></a>
     </div>
-    <script src="script.js"></script>
+    
+    
+    <div id="glow"></div>
+
   </body>
 </html>
