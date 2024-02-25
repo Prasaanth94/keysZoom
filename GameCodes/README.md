@@ -11,8 +11,6 @@ i and j will be included and ontop of having 5 letters to remove you will have 7
 
 ## Getting Started
 
-images\gameSS.png
-
 ### Dependencies
 
 HTML, CSS, JavaScript
