@@ -9,6 +9,8 @@ i and j will be included and ontop of having 5 letters to remove you will have 7
 
 ## Screen Shot
 
+![Alt text]("/GameCodes/images/gameSS.png")
+
 ## Getting Started
 
 ### Dependencies
