@@ -16,28 +16,22 @@ i and j will be included and ontop of having 5 letters to remove you will have 7
 ### Dependencies
 
 HTML, CSS, JavaScript
-
-### Installing
-
-- How/where to download your program
-- Any modifications needed to be made to files/folders
+google fonts
 
 ### Executing program
 
 Click the link to play the game.
 https://prasaanth94.github.io/keysZoom/GameCodes/
 
-```
-code blocks for commands
-```
-
 ## Help
 
-Any advise for common problems or issues.
+Any advise to help improve my game, do contact me.
 
-```
-command to run if program contains helper info
-```
+## Next Steps
+
+1. Adding sound effects on keyPress / different sounds for wrong and right key pressed
+2. Adding a Top Score Board
+3. Include animation for letters to slide on from right instead of appearing in the middle
 
 ## Authors
 
