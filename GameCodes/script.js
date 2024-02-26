@@ -28,19 +28,17 @@ start.addEventListener("click", () => {
 
   startGame();
   restart();
-  
-
 });
 
 /* ---------------------start of Challenge() codes -------------------------------------------*/
 function challenge() {
-  if(gameEnded) {
-    return;}
+  if (gameEnded) {
+    return;
+  }
   keysArr.length = 0;
   //resetting the KeysDisplay to empty
   keysDisplay.innerHTML = " ";
   //setting codition to check the difficulty lvls, and if matches excute the code below
-
 
   if (difficulty === 1) {
     //at this difficuty level, the score will be increased by the value of the scoreCounter
@@ -53,13 +51,13 @@ function challenge() {
     }
   }
   if (difficulty === 2) {
-    if(combo >= 40){
-      scoreCounter = Math.floor(1.5 *3);
+    if (combo >= 40) {
+      scoreCounter = Math.floor(1.5 * 3);
     }
-    
+
     //at this difficuty level, the score will be increased by the value of the scoreCounter
     else {
-    scoreCounter = 3;
+      scoreCounter = 3;
     }
     //using a for loop to display 7 blocks of letters as difficulty increased
     for (let i = 0; i < 7; i++) {
@@ -70,17 +68,15 @@ function challenge() {
   }
 
   if (difficulty === 3) {
-     if (combo <40){
+    if (combo < 40) {
       //at this difficuty level, the score will be increased by the value of the scoreCounter
-      scoreCounter = 5
-      }
-    else if(combo >= 40 && combo < 80) {
-      scoreCounter = Math.floor(1.5*5);
+      scoreCounter = 5;
+    } else if (combo >= 40 && combo < 80) {
+      scoreCounter = Math.floor(1.5 * 5);
+    } else if (combo >= 80) {
+      scoreCounter = Math.floor(2 * 5);
     }
-    else if(combo >= 80){
-      scoreCounter = Math.floor(2*5);
-    }
-    
+
     //using a for loop to display 9 blocks of letters as difficulty increased
     for (let i = 0; i < 9; i++) {
       //invoking these fucktions
@@ -93,14 +89,14 @@ function challenge() {
 /* ---------------------start of keyPress() codes -------------------------------------------*/
 
 function keyPress(callback) {
-  if (gameEnded){
+  if (gameEnded) {
     return;
   }
   //adding a key down event listenr
   document.addEventListener("keydown", (e) => {
     //a new const to store all the divs within the keysDisplay Div
     const keysToRemove = keysDisplay.querySelectorAll("div");
-    
+
     let counter = 0;
     //iterating through all the divs
     for (let i = 0; i < keysToRemove.length; i++) {
@@ -112,20 +108,21 @@ function keyPress(callback) {
         counter += 1;
         //lvl counter used to gradually increase the difficulty
         lvlCounter += 1;
-        combo +=1
+        combo += 1;
         score += scoreCounter;
-        
+
         break;
       }
       //if statement to check if the key pressed is not the key displayed
       if (e.key !== keysToRemove[counter].innerText) {
         //reduce the score if wrong key is pressed
-        if(score > 0){
-          score -= scoreCounter;}
-          if(score < 0) {
-            score = 0;
-          }
-          combo = 0;
+        if (score > 0) {
+          score -= scoreCounter;
+        }
+        if (score < 0) {
+          score = 0;
+        }
+        combo = 0;
 
         break;
       }
@@ -147,7 +144,6 @@ function keyPress(callback) {
     scoreDisplay.innerHTML = score;
     comboDisplay.innerHTML = combo;
     pointsDisplay.innerHTML = scoreCounter;
-
   });
 }
 
@@ -158,25 +154,20 @@ function idxGenerator() {
   //the difficulty on the user end
   if (difficulty === 1) {
     idx = Math.floor(Math.abs(Math.random() * letters.length - 4));
-    
   }
 
   if (difficulty === 2) {
     idx = Math.floor(Math.abs(Math.random() * letters.length - 2));
-    
-    
   }
   if (difficulty === 3) {
     idx = Math.floor(Math.abs(Math.random() * letters.length));
-    
-    
   }
 }
 
 /* ---------------------start of setKeysToHit() codes -------------------------------------------*/
 
 function setKeysToHit() {
-  if(gameEnded){
+  if (gameEnded) {
     return;
   }
   //assining a letter from the letter array to store in the const
@@ -228,16 +219,16 @@ function setKeysToHit() {
 function endGameDisplay() {
   gameEnded = true;
   document.removeEventListener("keydown", keyPress);
-  
+
   //giving the endDisplay elemeny an id for css
   endDisplay.setAttribute("id", "endDisplay");
   //a text to feed into enddisplay
   const endText = `Good Job! 
   Your Score is : ${score}`;
   //giving and id to closeEndDisplay element(button)
-  closeEndDisplay.setAttribute("id","closeEndDisplay")
+  closeEndDisplay.setAttribute("id", "closeEndDisplay");
   //giving it a text of close
-  closeEndDisplay.innerHTML ="Close";
+  closeEndDisplay.innerHTML = "Close";
   //adding the content of endText into endDisplay
   endDisplay.innerHTML = endText;
   //adding the close button into the endDisplay div
@@ -275,8 +266,7 @@ function timerToStart() {
   }, 1000);
 }
 
-function restart(){
-  
+function restart() {
   keyToHit = "";
   keysArrStr = "";
   difficulty = 1;
@@ -291,48 +281,41 @@ function restart(){
     endDisplay.remove();
     gameDisplay.appendChild(start);
     gameEnded = false;
-  })
-
+  });
 }
-
 
 function startGame() {
-  
-    //setting a timeout so the codes waits for the timertostart to run finish before executing
-    setTimeout(() => {
-      (function () {
-        keyToHit = "";
-        keysArrStr = "";
-        difficulty = 1;
-        idx = 0;
-        lvlCounter = 0;
-        scoreCounter = 0;
-        score = 0;
-        // creating a var to store a value, this valaue will determine the time of the timer
-        let sec = 100;
-        //const to store the timer and create a timer
-        gameTimer = setInterval(() => {
-          //timeLimit div to display the countdown
-          timeLimit.innerHTML = "00:" + sec;
-          //reduce the timer by 1 at each 1s interval
-          sec--;
-          //when timer hits 0, run the following codes
-          if (sec < 0) {
-            clearInterval(gameTimer);
-            gameDisplay.innerHTML = " ";
-            endGameDisplay();
-            
-          }
-        }, 1000);
-      })();
-      //invoking the functions below
-      challenge();
-      keyPress(challenge);
-      
-    }, 5000);
-  
+  //setting a timeout so the codes waits for the timertostart to run finish before executing
+  setTimeout(() => {
+    (function () {
+      keyToHit = "";
+      keysArrStr = "";
+      difficulty = 1;
+      idx = 0;
+      lvlCounter = 0;
+      scoreCounter = 0;
+      score = 0;
+      // creating a var to store a value, this valaue will determine the time of the timer
+      let sec = 20;
+      //const to store the timer and create a timer
+      gameTimer = setInterval(() => {
+        //timeLimit div to display the countdown
+        timeLimit.innerHTML = "00:" + sec;
+        //reduce the timer by 1 at each 1s interval
+        sec--;
+        //when timer hits 0, run the following codes
+        if (sec < 0) {
+          clearInterval(gameTimer);
+          gameDisplay.innerHTML = " ";
+          endGameDisplay();
+        }
+      }, 1000);
+    })();
+    //invoking the functions below
+    challenge();
+    keyPress(challenge);
+  }, 5000);
 }
-
 
 //PROBLEM game is still running even after endDisplay popup. hitting buttons still affect score
 //score goes up or down depending if hit right keyToRemove but nothing is displayed
