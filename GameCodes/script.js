@@ -22,15 +22,25 @@ let gameEnded = false;
 let combo = 0;
 let multiplier = " ";
 
-start.addEventListener("click", () => {
-  //remove the start button when the game starts
+const startButtonClickHandler = () => {
+  start.removeEventListener("click", startButtonClickHandler);
   start.remove();
-  //invoking the function below to coutdown
   timerToStart();
-
   startGame();
   restart();
-});
+};
+
+start.addEventListener("click", startButtonClickHandler);
+
+// start.addEventListener("click", () => {
+//   //remove the start button when the game starts
+//   start.remove();
+//   //invoking the function below to coutdown
+//   timerToStart();
+
+//   startGame();
+//   restart();
+// });
 
 /* ---------------------start of Challenge() codes -------------------------------------------*/
 function challenge() {
@@ -95,13 +105,13 @@ function challenge() {
 }
 
 /* ---------------------start of keyPress() codes -------------------------------------------*/
-
+let keyDownHandler;
 function keyPress(callback) {
   if (gameEnded) {
     return;
   }
-  //adding a key down event listenr
-  document.addEventListener("keydown", (e) => {
+
+  const keyDownHandler = (e) => {
     //a new const to store all the divs within the keysDisplay Div
     const keysToRemove = keysDisplay.querySelectorAll("div");
 
@@ -153,12 +163,16 @@ function keyPress(callback) {
     comboDisplay.innerHTML = combo;
     pointsDisplay.innerHTML = scoreCounter;
     multiplierDisplay.innerHTML = multiplier;
-  });
+  };
+  document.addEventListener("keydown", keyDownHandler);
 }
 
 /* ---------------------start of idxGenerator() codes -------------------------------------------*/
 
 function idxGenerator() {
+  if (gameEnded) {
+    return;
+  }
   //finding a random number for the idx. each level has a specific formula to only select within the right length to control the
   //the difficulty on the user end
   if (difficulty === 1) {
@@ -227,7 +241,8 @@ function setKeysToHit() {
 
 function endGameDisplay() {
   gameEnded = true;
-  document.removeEventListener("keydown", keyPress);
+  document.removeEventListener("keydown", keyDownHandler);
+  start.removeEventListener("click", startButtonClickHandler);
 
   //giving the endDisplay elemeny an id for css
   endDisplay.setAttribute("id", "endDisplay");
