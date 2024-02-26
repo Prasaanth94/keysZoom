@@ -13,6 +13,8 @@ i and j will be included and ontop of having 5 letters to remove you will have 7
 
 ## Getting Started
 
+This game requires the use of both hands.
+
 ### Dependencies
 
 -HTML
@@ -45,14 +47,5 @@ prasaanth2208@gmail.com
 
 ## Version History
 
-- 0.2
-  - Various bug fixes and optimizations
-  - See [commit change]() or See [release history]()
 - 0.1
   - Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-## Acknowledgments
