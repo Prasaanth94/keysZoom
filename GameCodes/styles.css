@@ -325,6 +325,11 @@ a {
   text-decoration: underline;
 }
 
+#hint {
+  text-align: center;
+  text-decoration: underline;
+}
+
 #scoreDiv {
   z-index: +1;
 }
