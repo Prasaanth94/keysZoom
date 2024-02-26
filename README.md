@@ -28,7 +28,7 @@ This game requires the use of both hands.
 ### Executing program
 
 Click the link to play the game.
-https://prasaanth94.github.io/keysZoom/GameCodes/
+[Link to game](https://prasaanth94.github.io/keysZoom/GameCodes/)
 
 ## Help
 
