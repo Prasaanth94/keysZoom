@@ -1,13 +1,32 @@
-
-
-
-
-body {
-   background-color: #9da39a; 
-   /* background-color: black; */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
 
-#gamePage{
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+:root {
+  --clr-1: #052b2f;
+  --clr-2: #073438;
+  --clr-3: #0e4b50;
+  --clr-4: #2d8f85;
+  --clr-5: #637c54;
+}
+
+body {
+  background-color: #9da39a;
+  /* background-color: black; */
+}
+
+#gamePage {
   background-color: black;
 }
 
@@ -34,32 +53,37 @@ a {
 }
 
 #game {
-  
   display: flex;
   height: 100px;
   width: 70%;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(45deg, red, orange, yellow, green,blue,indigo,violet);
+  z-index: 1;
+  background: linear-gradient(
+    45deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
   background-size: 300% 300%;
   animation: colorChange 10s ease-in-out infinite;
-  
 }
 
 @keyframes colorChange {
-  0%{
-    background-position:  0 50%;
+  0% {
+    background-position: 0 50%;
   }
-  50%{
-    background-position:  100% 50%;
+  50% {
+    background-position: 100% 50%;
   }
-  100%{
-    background-position:  0 50%;
+  100% {
+    background-position: 0 50%;
   }
-
 }
-
-
 
 #keysDisplay {
   display: flex;
@@ -73,7 +97,7 @@ a {
   height: 50px;
   border-radius: 50px;
   font-size: 1.5rem;
-  
+
   background-color: aquamarine;
   font-family: "Wallpoet", sans-serif;
   font-weight: 400;
@@ -85,9 +109,15 @@ a {
   transition: 1s;
   box-shadow: 5px 15px 8px;
   background-color: aqua;
-  
 }
-
+.letterFont {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #letterW {
   background-color: red;
   font-size: 35px;
@@ -95,8 +125,6 @@ a {
   height: 50px;
   border: 3px white solid;
   border-radius: 50%;
-  text-align: center;
-  justify-content: center;
   margin-right: 20px;
   box-shadow: 3px 10px 10px;
 }
@@ -108,8 +136,6 @@ a {
   height: 50px;
   border: 3px white solid;
   border-radius: 50%;
-  text-align: center;
-  justify-content: center;
   margin-right: 20px;
   box-shadow: 3px 10px 10px;
 }
@@ -120,12 +146,8 @@ a {
   height: 50px;
   border-radius: 100%;
   border: 3px white solid;
-  text-align: center;
-  justify-content: center;
   margin-right: 20px;
   box-shadow: 3px 10px 10px;
-  position: relative;
-  
 }
 
 #letterD {
@@ -135,8 +157,6 @@ a {
   height: 50px;
   border: 3px white solid;
   border-radius: 50%;
-  text-align: center;
-  justify-content: center;
   margin-right: 20px;
   box-shadow: 3px 10px 10px;
 }
@@ -147,8 +167,6 @@ a {
   height: 50px;
   border: 3px white solid;
   border-radius: 50%;
-  text-align: center;
-  justify-content: center;
   margin-right: 20px;
   box-shadow: 3px 10px 10px;
 }
@@ -159,8 +177,6 @@ a {
   height: 50px;
   border: 3px white solid;
   border-radius: 50%;
-  text-align: center;
-  justify-content: center;
   margin-right: 20px;
   box-shadow: 3px 10px 10px;
 }
@@ -171,8 +187,6 @@ a {
   height: 50px;
   border: 3px white solid;
   border-radius: 50%;
-  text-align: center;
-  justify-content: center;
   margin-right: 20px;
   box-shadow: 3px 10px 10px;
 }
@@ -183,22 +197,50 @@ a {
   height: 50px;
   border: 3px white solid;
   border-radius: 50%;
-  text-align: center;
-  justify-content: center;
   margin-right: 20px;
   box-shadow: 3px 10px 10px;
 }
 
 #timer {
-  font-size: 45px;
+  display: flex;
   height: 70px;
   width: 70px;
-  border: 3px solid white;
-  border-radius: 50%;
-  background-color: beige;
-  text-align: center;
-  justify-items: center;
-  
+  aspect-ratio: 1/1.5;
+  background: var(--clr-1);
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: white;
+  font-size: 2.5rem;
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+#timer::before,
+#timer::after {
+  content: " ";
+  position: absolute;
+  inset: -0.2rem;
+  z-index: -1;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--clr-3),
+    var(--clr-4),
+    var(--clr-5),
+    var(--clr-4),
+    var(--clr-3)
+  );
+
+  border-radius: inherit;
+  animation: rotation 3s linear infinite;
+}
+
+#timer::after {
+  filter: blur(1.5rem);
 }
 
 #timerDiv {
@@ -217,13 +259,12 @@ a {
   font-size: 40px;
 }
 
-#closeEndDisplay{
-
-    align-self: center;
-    width: 50%;
-    margin-top: 40px;
+#closeEndDisplay {
+  align-self: center;
+  width: 50%;
+  margin-top: 40px;
 }
-#about{
+#about {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -232,7 +273,7 @@ a {
   margin-left: auto;
   margin-right: auto;
 }
-#gameTitle{
+#gameTitle {
   max-width: 100%;
   font-size: 5em;
   margin-left: auto;
@@ -241,11 +282,9 @@ a {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-variation-settings:
-    "MORF" 15,
-    "SHLN" 50;
+  font-variation-settings: "MORF" 15, "SHLN" 50;
 }
-#description{
+#description {
   font-size: 2em;
   width: 50%;
   font-family: "Libre Baskerville", serif;
@@ -253,8 +292,7 @@ a {
   font-style: normal;
 }
 
-#instructions{
-
+#instructions {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -264,7 +302,7 @@ a {
   margin-right: auto;
 }
 
-#instTitle{
+#instTitle {
   max-width: 100%;
   font-size: 4em;
   margin-left: auto;
@@ -280,17 +318,15 @@ a {
   font-style: normal;
   font-size: 2em;
   width: 50%;
-
 }
 
-#howTo{
+#howTo {
   text-align: center;
   text-decoration: underline;
 }
 
-#scoreDiv{
-  z-index: +1;  
-  
+#scoreDiv {
+  z-index: +1;
 }
 
 #gamePosition {
@@ -300,23 +336,21 @@ a {
   height: 600px;
   justify-content: center;
   align-items: center;
-  
 }
 
-#gameButton{
+#gameButton {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#gameLink{
+#gameLink {
   height: 80px;
   width: 140px;
   border-radius: 70px;
   font-size: 2em;
   background-color: silver;
   margin-bottom: 40px;
-
 }
 
 #gameLink:hover {
@@ -324,41 +358,28 @@ a {
   transition: 1s;
   box-shadow: 5px 15px 8px;
   background-color: aqua;
-  
-}
-@property --gradient-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-:root{
-  --clr-1 : #052b2f;
-  --clr-2 : #073438;
-  --clr-3 : #0e4b50;
-  --clr-4 : #2d8f85;
-  --clr-5 : #637c54;
 }
 
 #timeLimit {
   display: flex;
-    height: 100px;
-    width: 100px;
-    aspect-ratio: 1/1.5;
-    background: var(--clr-1);
-    font-size: 1.5rem;
-    font-weight: bold;
-    border-radius: 100%;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-top: 30px;
-    color: white;
+  height: 100px;
+  width: 100px;
+  aspect-ratio: 1/1.5;
+  background: var(--clr-1);
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 30px;
+  color: white;
 }
 
 #timeLimit::before,
-#timeLimit::after{
+#timeLimit::after {
   content: " ";
-  position: absolute; 
+  position: absolute;
   inset: -0.2rem;
   z-index: -1;
   background: conic-gradient(
@@ -368,23 +389,17 @@ a {
     var(--clr-5),
     var(--clr-4),
     var(--clr-3)
-  ) ;
-  
+  );
+
   border-radius: inherit;
   animation: rotation 3s linear infinite;
 }
 
-#timeLimit::after{
+#timeLimit::after {
   filter: blur(1.5rem);
 }
 
-@keyframes rotation {
-  0% {--gradient-angle: 0deg;}
-  100% {--gradient-angle: 360deg;}
-  
-}
-
-#scoreDiv  {
+#scoreDiv {
   color: white;
   font-size: 2rem;
   font-family: "Black Ops One", system-ui;
@@ -392,23 +407,26 @@ a {
   font-style: normal;
 }
 
-#pointsDiv{
+#pointsDiv {
   color: white;
   font-size: 2rem;
   font-family: "Black Ops One", system-ui;
   font-weight: 400;
   font-style: normal;
-
 }
 
-#comboDiv{
+#comboDiv {
   color: white;
   font-size: 2rem;
   font-family: "Black Ops One", system-ui;
   font-weight: 400;
   font-style: normal;
-
-  
 }
 
-
+#multiplierDiv {
+  color: white;
+  font-size: 2rem;
+  font-family: "Black Ops One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}

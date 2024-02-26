@@ -3,13 +3,14 @@ const start = document.querySelector("button");
 const keysDisplay = document.createElement("div");
 keysDisplay.setAttribute("id", "keysDisplay");
 const timeLimit = document.getElementById("timeLimit");
-const letters = ["w", "a", "s", "d", "i", "j", "k", "l"];
+const letters = ["W", "A", "S", "D", "I", "J", "K", "L"];
 const keysArr = [];
 const closeEndDisplay = document.createElement("button");
 const endDisplay = document.createElement("Div");
 const scoreDisplay = document.getElementById("scoreDisplay");
 const comboDisplay = document.getElementById("comboDisplay");
 const pointsDisplay = document.getElementById("pointsDisplay");
+const multiplierDisplay = document.getElementById("multiplierDisplay");
 let keyToHit = "";
 let keysArrStr = "";
 let difficulty = 1;
@@ -19,6 +20,7 @@ let scoreCounter = 0;
 let score = 0;
 let gameEnded = false;
 let combo = 0;
+let multiplier = " ";
 
 start.addEventListener("click", () => {
   //remove the start button when the game starts
@@ -43,6 +45,7 @@ function challenge() {
   if (difficulty === 1) {
     //at this difficuty level, the score will be increased by the value of the scoreCounter
     scoreCounter = 1;
+    multiplier = "0";
     //using a for loop to display 5 blocks of letters
     for (let i = 0; i < 5; i++) {
       //invoking these fucktions
@@ -53,11 +56,13 @@ function challenge() {
   if (difficulty === 2) {
     if (combo >= 40) {
       scoreCounter = Math.floor(1.5 * 3);
+      multiplier = "1.5x";
     }
 
     //at this difficuty level, the score will be increased by the value of the scoreCounter
     else {
       scoreCounter = 3;
+      multiplier = "0";
     }
     //using a for loop to display 7 blocks of letters as difficulty increased
     for (let i = 0; i < 7; i++) {
@@ -71,10 +76,13 @@ function challenge() {
     if (combo < 40) {
       //at this difficuty level, the score will be increased by the value of the scoreCounter
       scoreCounter = 5;
+      multiplier = "0";
     } else if (combo >= 40 && combo < 80) {
       scoreCounter = Math.floor(1.5 * 5);
+      multiplier = "1.5x";
     } else if (combo >= 80) {
       scoreCounter = Math.floor(2 * 5);
+      multiplier = "2x";
     }
 
     //using a for loop to display 9 blocks of letters as difficulty increased
@@ -101,7 +109,7 @@ function keyPress(callback) {
     //iterating through all the divs
     for (let i = 0; i < keysToRemove.length; i++) {
       //testing if the key pressed is the same as the letter in that div
-      if (e.key === keysToRemove[counter].innerText) {
+      if (e.key.toUpperCase() === keysToRemove[counter].innerText) {
         //if its the same remove the div
         keysToRemove[counter].remove();
         //break the loop and restart to prevent divs with the same letters to remove at the same run
@@ -144,6 +152,7 @@ function keyPress(callback) {
     scoreDisplay.innerHTML = score;
     comboDisplay.innerHTML = combo;
     pointsDisplay.innerHTML = scoreCounter;
+    multiplierDisplay.innerHTML = multiplier;
   });
 }
 
@@ -184,29 +193,29 @@ function setKeysToHit() {
     keyToHit = document.createElement("div");
     //giving it the innerText which is the letter stored athe specific index in the keysArr
     keyToHit.innerText = keysArr[i];
-
-    if (keyToHit.innerText === "w") {
+    keyToHit.setAttribute("class", "letterFont");
+    if (keyToHit.innerText === "W") {
       keyToHit.setAttribute("id", "letterW");
     }
-    if (keyToHit.innerText === "a") {
+    if (keyToHit.innerText === "A") {
       keyToHit.setAttribute("id", "letterA");
     }
-    if (keyToHit.innerText === "s") {
+    if (keyToHit.innerText === "S") {
       keyToHit.setAttribute("id", "letterS");
     }
-    if (keyToHit.innerText === "d") {
+    if (keyToHit.innerText === "D") {
       keyToHit.setAttribute("id", "letterD");
     }
-    if (keyToHit.innerText === "i") {
+    if (keyToHit.innerText === "I") {
       keyToHit.setAttribute("id", "letterI");
     }
-    if (keyToHit.innerText === "j") {
+    if (keyToHit.innerText === "J") {
       keyToHit.setAttribute("id", "letterJ");
     }
-    if (keyToHit.innerText === "k") {
+    if (keyToHit.innerText === "K") {
       keyToHit.setAttribute("id", "letterK");
     }
-    if (keyToHit.innerText === "l") {
+    if (keyToHit.innerText === "L") {
       keyToHit.setAttribute("id", "letterL");
     }
   }
@@ -266,6 +275,8 @@ function timerToStart() {
   }, 1000);
 }
 
+/* ---------------------start of restart() codes -------------------------------------------*/
+
 function restart() {
   keyToHit = "";
   keysArrStr = "";
@@ -281,8 +292,11 @@ function restart() {
     endDisplay.remove();
     gameDisplay.appendChild(start);
     gameEnded = false;
+    location.reload();
   });
 }
+
+/* ---------------------start of startGame() codes -------------------------------------------*/
 
 function startGame() {
   //setting a timeout so the codes waits for the timertostart to run finish before executing
@@ -296,7 +310,7 @@ function startGame() {
       scoreCounter = 0;
       score = 0;
       // creating a var to store a value, this valaue will determine the time of the timer
-      let sec = 20;
+      let sec = 30;
       //const to store the timer and create a timer
       gameTimer = setInterval(() => {
         //timeLimit div to display the countdown

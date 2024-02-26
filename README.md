@@ -15,8 +15,10 @@ i and j will be included and ontop of having 5 letters to remove you will have 7
 
 ### Dependencies
 
-HTML, CSS, JavaScript
-google fonts
+-HTML
+-CSS
+-JavaScript
+-google fonts
 
 ### Executing program
 
